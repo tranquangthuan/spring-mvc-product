@@ -56,4 +56,9 @@ public class ProductServiceImpl {
 	public List<Product> search(String searchKey) {
 		return productRepository.search(searchKey);
 	}
+
+	@Transactional
+	public boolean existSerial(String serial) {
+		return productRepository.existSerial(serial);
+	}
 }

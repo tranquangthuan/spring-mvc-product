@@ -2,6 +2,7 @@ package thuan.com.fa.demomvc.repository;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -60,5 +61,21 @@ public class ProductRepositoryImpl {
 		createQuery.setParameter("searchKey", "%" + searchKey + "%");
 		List<Product> products = createQuery.getResultList();
 		return products;
+	}
+
+	public boolean existSerial(String serial) {
+		Session session;
+		try {
+			session = sessionFactory.getCurrentSession();
+		} catch (HibernateException e) {
+			session = sessionFactory.openSession();
+		}
+		Query<Long> createQuery = session.createQuery("SELECT COUNT(*) FROM Product p WHERE p.serial=:serial",
+				Long.class);
+		createQuery.setParameter("serial", serial);
+		long totalRecord = createQuery.getSingleResult();
+		System.out.println("Total record with serial = " + totalRecord + " serial = " + serial);
+
+		return totalRecord > 0;
 	}
 }

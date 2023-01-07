@@ -16,6 +16,8 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import thuan.com.fa.demomvc.annotation.UniqueSerial;
+
 @Entity
 public class Product {
 
@@ -35,6 +37,9 @@ public class Product {
 
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime gioSanXuat;
+
+	@UniqueSerial
+	private String serial;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
@@ -65,6 +70,18 @@ public class Product {
 		this.quantity = quantity;
 		this.ngaySanXuat = ngaySanXuat;
 		this.gioSanXuat = gioSanXuat;
+		this.category = category;
+	}
+
+	public Product(@NotBlank(message = "please input name") String name,
+			@Range(min = 1, max = 1000, message = "Nhập quantity trong khoảng 1 - 1000") int quantity,
+			LocalDate ngaySanXuat, LocalTime gioSanXuat, String serial, Category category) {
+		super();
+		this.name = name;
+		this.quantity = quantity;
+		this.ngaySanXuat = ngaySanXuat;
+		this.gioSanXuat = gioSanXuat;
+		this.serial = serial;
 		this.category = category;
 	}
 
@@ -114,6 +131,14 @@ public class Product {
 
 	public void setGioSanXuat(LocalTime gioSanXuat) {
 		this.gioSanXuat = gioSanXuat;
+	}
+
+	public String getSerial() {
+		return serial;
+	}
+
+	public void setSerial(String serial) {
+		this.serial = serial;
 	}
 
 	@Override

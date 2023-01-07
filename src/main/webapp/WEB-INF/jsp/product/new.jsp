@@ -41,6 +41,11 @@
 					<td><form:errors path="category.id" /></td>
 				</tr>
 				<tr>
+					<td><form:label path="serial">serial</form:label></td>
+					<td><form:input path="serial" /></td>
+					<td><form:errors path="serial" /></td>
+				</tr>
+				<tr>
 					<td></td>
 					<td><form:button value="Add">Add</form:button></td>
 				</tr>

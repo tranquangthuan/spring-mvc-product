@@ -49,7 +49,8 @@ public class ProductController {
 	}
 
 	@PostMapping("/save")
-	public String addNewProduct(@ModelAttribute(name = "productForm") @Valid Product product, BindingResult result) {
+	public String addNewProduct(@ModelAttribute(name = "productForm") @Valid Product product, 
+			BindingResult result) {
 		if (result.hasErrors()) {
 			return "/product/new";
 		}
@@ -60,7 +61,7 @@ public class ProductController {
 	@GetMapping("/delete")
 	public String delete(@RequestParam(name = "id") long productId, @RequestParam(name = "age") long age) {
 		System.out.println(" id = " + productId + "age = " + age);
-		//localhost:xxx/product/delete?id=10&age=20&address=DN
+		// localhost:xxx/product/delete?id=10&age=20&address=DN
 		productServiceImpl.delete(productId);
 		return "redirect:/product/list";
 	}
