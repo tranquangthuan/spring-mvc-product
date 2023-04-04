@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<script src="<c:url value="/resources/js/jquery-3.6.4.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <style>
 .pagination {
 	display: inline-block;
@@ -59,7 +62,7 @@ td {
 					value="Search">
 			</form>
 		</div>
-		<table>
+		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
 					<th width="10%">Id</th>

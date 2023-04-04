@@ -63,4 +63,7 @@
 		</property>
 	</bean>
 
+	<mvc:resources mapping="/resources/**"
+		location="/resources/bootstrap/" cache-period="31556926" />
+
 </beans>
