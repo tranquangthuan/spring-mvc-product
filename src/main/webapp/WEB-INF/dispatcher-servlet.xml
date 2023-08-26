@@ -63,6 +63,11 @@
 		</property>
 	</bean>
 
+	<mvc:interceptors>
+		<bean id="loggerInterceptor"
+			class="thuan.com.fa.demomvc.interceptor.PerformanceInterceptor" />
+	</mvc:interceptors>
+
 	<mvc:resources mapping="/resources/**"
 		location="/resources/bootstrap/" cache-period="31556926" />
 
