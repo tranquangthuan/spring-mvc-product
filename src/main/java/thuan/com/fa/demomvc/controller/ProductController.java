@@ -58,8 +58,8 @@ public class ProductController {
 	}
 
 	@GetMapping("/delete")
-	public String delete(@RequestParam(name = "id") long productId, @RequestParam(name = "age") long age) {
-		System.out.println(" id = " + productId + "age = " + age);
+	public String delete(@RequestParam(name = "id") long productId) {
+		System.out.println(" id = " + productId);
 		// localhost:xxx/product/delete?id=10&age=20&address=DN
 		productServiceImpl.delete(productId);
 		return "redirect:/product/list";
